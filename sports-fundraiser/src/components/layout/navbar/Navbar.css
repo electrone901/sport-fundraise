@@ -1,0 +1,85 @@
+.grow {
+    flex-grow: 1;
+}
+
+.toolbar {
+    background-color: #219e01;
+}
+
+.whiteLink {
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.5;
+    text-transform: capitalize;
+}
+
+.whiteLink:nth-last-of-type() {
+    padding-right: 1rem;
+}
+
+.logo {
+    width: 7rem;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.title {
+    padding-right: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.menuButton {
+    margin-right: 2px;
+}
+
+.search {
+    position: 'relative';
+    border-radius: 5px;
+    background-color: white;
+}
+
+.search:hover {
+    background-color: salmon;
+}
+
+.searchIcon {
+    padding: 5px;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputRoot {
+    color: 'inherit';
+}
+
+.sectionMobile {
+    display: flex;
+}
+
+.connect-wallet-btn {
+    background-color: #0a1cea;
+    color: white;
+    font-weight: 800;
+    text-transform: none;
+}
+
+.connect-wallet-btn-ud {
+    background-color: #df0aea;
+    color: white;
+    font-weight: 800;
+    text-transform: none;
+}
+
+.connected-btn {
+    background-color: #b907d3;
+    color: white;
+    font-weight: 800;
+    text-transform: none;
+}
