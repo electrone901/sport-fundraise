@@ -25,12 +25,15 @@ We use:
 - `NFTPort` smooths the path of minting and donating NFTs for communities. This is a win-win situation for our comunities because they don't have to pay to contribute or mint NFTs.
 
 
+- `Unstoppable Domains` to initialize and authenticate users for Sports Fundraiser App. Once a user is authenticated with Unstoppable Domains we get the user info from Unstoppable Domains such as domain name and NFTs balance.
+
 - `zkSync` for the smart contract.
 
+- `Transak` facilitated a simple integration to allow our users to buy tokens. Once, they have tokens they can donate to their favorite fundraiser.
 
 - `Hardhat` for local blockchain development.
 
-- `zkSync Network` is the network where we deployed our dApp.
+- `zkSync` facilitated a Layer 2 scaling solution on Ethereum.  zkSync is great for our app because of its low gas and fast transactions, without compromising on security. Users can deposit, send and withdraw assets using zkSync on our app.
 
 - `React Js, Material-ui, Web3` React Js for the frontend, Material-ui and Web3 to connect to the blockchain.
 

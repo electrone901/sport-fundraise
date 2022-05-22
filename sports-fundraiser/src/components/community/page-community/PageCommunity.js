@@ -74,10 +74,10 @@ function PageCommunity() {
   const loadMyCollection = async () => {
     try {
       const covalentAPI = 'ckey_d4115699196e4d238fa138e180c'
-      const chefContractAddress = '0x1a2FCb5F2704f1fF8eFF26668f63D001b42bF80B'
+      const contractAddress = '0x1a2FCb5F2704f1fF8eFF26668f63D001b42bF80B'
       try {
         const nfts = await fetch(
-          `https://api.covalenthq.com/v1/80001/tokens/${chefContractAddress}/nft_token_ids/?quote-currency=USD&format=JSON&key=${covalentAPI}`,
+          `https://api.covalenthq.com/v1/80001/tokens/${contractAddress}/nft_token_ids/?quote-currency=USD&format=JSON&key=${covalentAPI}`,
         )
         const allNFTS = await nfts.json()
         if (allNFTS) {
