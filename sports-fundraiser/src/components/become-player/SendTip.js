@@ -21,7 +21,7 @@ const userImg =
 const toBecomePlayersIPFS =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGRlZjk5ZThFZmFjMTdGMWI3YzA2MjIxMDM1ODg3Qjk4REE5MjJGODIiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY0OTU0MDA1ODg2NSwibmFtZSI6InRvQmVjb21lUGxheWVyc0lQRlMifQ.MkEGo3bsu3OQHLBa6IFFdWrbVbhId0KFGyb_VuhKsP8'
 
-function SendTip({ account, connectWallet }) {
+function SendTip({ account, connectWallet, sendTip }) {
   const [to, setTo] = useState('')
   const tokenToSendType = React.createRef('')
   const tokenToPayType = React.createRef('')
@@ -116,7 +116,7 @@ function SendTip({ account, connectWallet }) {
                 size="large"
                 variant="contained"
                 color="primary"
-                // onClick={handleSubmit}
+                onClick={sendTip}
               >
                 Submit
               </Button>

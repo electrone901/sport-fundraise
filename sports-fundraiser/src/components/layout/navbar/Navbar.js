@@ -15,7 +15,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 import { StylesProvider } from '@material-ui/core/styles'
 import './Navbar.css'
-import logo from '../../../images/plogo.png'
+import logo from '../../../images/logo1.png'
 import UAuth from '@uauth/js'
 
 export const Navbar = withRouter(
@@ -25,9 +25,8 @@ export const Navbar = withRouter(
     const isMenuOpen = Boolean(anchorEl)
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
     const [udUser, setudUser] = useState('')
-    // 72034f95-2aef-4ca8-855e-7abc98e0a117
 
-    // Add unstoppable Domain
+    
     const uauth = new UAuth({
       clientID: '69c407cc-4663-48af-af8a-4f90592ba307',
       redirectUri: 'http://localhost:3000',
@@ -128,6 +127,9 @@ export const Navbar = withRouter(
         <div className="grow">
           <AppBar position="static">
             <Toolbar className="toolbar">
+              <Link to="/" className="whiteLink">
+                <img src={logo} alt="logo" className="logo" />
+              </Link>
               <Link to="/" className="whiteLink">
                 <Typography className="title" variant="h6" noWrap>
                   Sport Fundraiser

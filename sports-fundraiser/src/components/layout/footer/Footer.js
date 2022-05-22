@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import './Footer.css'
-import logo from '../../../images/plogo.png'
+import logo from '../../../images/logo1.png'
 
 function Footer() {
   return (
@@ -56,7 +56,7 @@ function Footer() {
 
             <Grid item xs={12} sm={9}>
               <Typography className="copyright">
-                Copyright &copy; {new Date().getFullYear()} Soccer DAO.
+                Copyright &copy; {new Date().getFullYear()} Sport Fundraiser App.
               </Typography>
             </Grid>
           </Grid>
