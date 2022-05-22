@@ -1,25 +1,16 @@
-
-
-# Sport Fundraiser
-A decentralized fundraising app that helps semi-professional players to get funding. Get started today by registering and raising the money you need to buy your sports equipment. This project allows fans to support aspiring sports stars by donating and raising money.
-
-
-
-SoccerDAO is a social dApp built for anyone who loves exercising and soccer.
-
-SoccerDAO is a platform where Soccer organizers or coordinators can register their soccer community, set up a profile, create bounties, and receive tips from the community.
-
+# Sports Fundraiser App
+A decentralized fundraising app that helps athletes get funds. Sports Fundraiser App is a crowdfunding platform that allows people to raise money for events ranging from life events such as celebrations and graduations to challenging circumstances.
+Get started today by registering and raising the money to your needs to buy your sports equipment.
 Whenever a viewer goes to the SoccerDAO platform will be able to browse all and every soccer organization, and see details from the specific community and exclusive content.
 
 Overall, users will be able to:
 
-- Register to become Official members
-- send or receive donations
-- donate money to their favorite Soccer community
+- Register a fundraiser
+- Buy more than 100 tokens using Trasank
+- Send NFTs using NFTPort
+- Send/receive tokens
+- Donate money to their favorite fundraiser
 
-## Video
-
-https://youtu.be/9RyMDFCMnbE
 
 # How it's made
 
@@ -33,22 +24,16 @@ We use:
 
 - `NFTPort` smooths the path of minting and donating NFTs for communities. This is a win-win situation for our comunities because they don't have to pay to contribute or mint NFTs.
 
-- `Pocket Portal` smooths the path of deploying and the hustle of paying such big transactions to deploy our communities' contract to a node using the Rinkeby network.
 
-- `Skynet` facilitated the process of deploying our dApp front-end application in a seamless way.
+- `zkSync` for the smart contract.
 
-- `Solidity` for the smart contract.
 
-- `OpenZeppelin ERC721` we use the ERC721 template for faster development of the PetGram smart contract.
+- `Hardhat` for local blockchain development.
 
-- `Ganache` for local blockchain development.
-
-- `Rinkeby Network` is the network where we deployed our dApp.
+- `zkSync Network` is the network where we deployed our dApp.
 
 - `React Js, Material-ui, Web3` React Js for the frontend, Material-ui and Web3 to connect to the blockchain.
 
-Communities Using Covalent API to Fetch all NFTs from a wallet Address
-![Main Page](https://raw.githubusercontent.com/electrone901/SoccerDAO/main/Home.png)
 
 # Getting Started
 
@@ -62,6 +47,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 # Note
 
-to run 
+to run
 yarn hardhat compile
 
+
+This is awesome!! Do not give up no matter what, always try just one more time, and eventually you will be successful.

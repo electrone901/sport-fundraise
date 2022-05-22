@@ -9,7 +9,18 @@ import {
   Button,
   Card,
   ImageListItem,
+  CardMedia,
+  CardContent,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Avatar,
 } from '@material-ui/core'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import community1 from '../../../images/preview-community.jpg'
@@ -27,7 +38,12 @@ function PageCommunity() {
   const [projectWallet, setProjectWallet] = useState('')
   const [userHistory, setUserHistory] = useState([])
   const [data, setData] = useState('')
-  const userWallet = '0x463Eeb088b094D2CeEec50d186A36DdC80c05870' //need to change
+  const userWallet = '0xAF67cbD8fb00759C3b4667beAcfBB3600e25476A'
+  const [items, setItems] = useState([])
+  console.log(
+    '🚀 ~ file: PageCommunity.js ~ line 43 ~ PageCommunity ~ items',
+    items,
+  )
 
   const getMetaData = async () => {
     let data = await fetch(`https://ipfs.io/ipfs/${fundId}/metadata.json`)
@@ -56,17 +72,36 @@ function PageCommunity() {
   }
 
   const loadMyCollection = async () => {
-    const covalentAPI = 'ckey_d4115699196e4d238fa138e180c'
     try {
-      const historyResult = await fetch(
-        `https://api.covalenthq.com/v1/137/address/${userWallet}/balances_v2/?nft=true&key=${covalentAPI}`,
-      )
-      const { data } = await historyResult.json()
-      if (data) {
-        setData(data)
-        setUserHistory(data.items[0].nft_data)
-        setLoading(false)
+      const covalentAPI = 'ckey_d4115699196e4d238fa138e180c'
+      const chefContractAddress = '0x1a2FCb5F2704f1fF8eFF26668f63D001b42bF80B'
+      try {
+        const nfts = await fetch(
+          `https://api.covalenthq.com/v1/80001/tokens/${chefContractAddress}/nft_token_ids/?quote-currency=USD&format=JSON&key=${covalentAPI}`,
+        )
+        const allNFTS = await nfts.json()
+        if (allNFTS) {
+          setNfts(allNFTS)
+          setItems(allNFTS?.data?.items)
+          setLoading(false)
+        }
+      } catch (error) {
+        console.log(error)
       }
+
+      // const historyResult = await fetch(
+      //   `https://api.covalenthq.com/v1/137/address/${userWallet}/balances_v2/?nft=true&key=${covalentAPI}`,
+      // )
+      // const { data } = await historyResult.json()
+      // console.log(
+      //   '🚀 ~ file: PageCommunity.js ~ line 65 ~ loadMyCollection ~ data',
+      //   data,
+      // )
+      // if (data) {
+      //   setData(data)
+      //   setUserHistory(data.items[0].nft_data)
+      //   setLoading(false)
+      // }
     } catch (error) {
       setLoading(true)
       console.error(error)
@@ -79,10 +114,6 @@ function PageCommunity() {
     loadMyCollection()
   }, [])
 
-  console.log(' data', data)
-  const sendTip = (e) => {
-    e.preventDefault()
-  }
   return (
     <StylesProvider injectFirst>
       <Container
@@ -150,102 +181,87 @@ function PageCommunity() {
             </Grid>
           </Box>
         </div>
-
-        <br />
-        <br />
-        <BasicTabs />
-        <br />
-        <br />
-        <Typography className="subtitle" color="textPrimary" gutterBottom>
-          The West Side Community Garden NFTs via Covalent
-        </Typography>
-        <p>
-          The Covalent Unified API can be used to pull balances, positions and
-          historical granular transaction data from dozens of blockchain
-          networks. This data enables hundreds of end-user use-cases like
-          wallets, investor dashboards, taxation tools and as-of-yet unknown
-          use-cases.
-        </p>
-        <br />
-        <br />
-
-        {data ? (
-          <Container>
-            <div className="data">
-              <p className="info">
-                <strong>Contract Address: </strong>
-                {data.address}
-              </p>
-              <p className="info">
-                <strong>Last update: </strong> {data.updated_at}
-              </p>
-              <p>
-                <strong className="info">Total Count: </strong>
-                {data.items.length}
-              </p>
-            </div>
-          </Container>
-        ) : (
-          ''
-        )}
-
+        <br/>
+        <br/>
+        <h2>Contract Stats from Covalent API</h2>
         {loading ? (
           <CircularStatic />
         ) : (
           <div>
-            {userHistory && userHistory.length ? (
-              userHistory.map((project, index) => (
-                <Card className="card-padding" key={index}>
-                  <Grid container spacing={1}>
-                    <Grid item xs={2}>
-                      <img
-                        className="nft-img"
-                        src={project.external_data.image}
-                        style={{ width: '100%' }}
-                        alt=""
-                      />
-                    </Grid>
-
-                    <Grid item xs={10}>
-                      <div className="container-flex">
-                        <h2 className="inner2">{project.external_data.name}</h2>
-                        <p className="info">
-                          TokenId: <strong>{project.token_id}</strong>
-                        </p>
-                        <p className="info">
-                          <strong>Token Balance: </strong>
-                          {project.token_balance}
-                        </p>
-                        <p className="info">
-                          <strong>Tokens supported: </strong>
-                          {project.supports_erc.length > 0 ? (
-                            project.supports_erc.map((index) => (
-                              <span key={index}>{index}, </span>
-                            ))
-                          ) : (
-                            <p>ERC20</p>
-                          )}
-                        </p>
-                        <p className="info">
-                          <strong>Owner: </strong>
-                          {project.owner}
-                        </p>
-                        <p className="info">
-                          <strong>Original owner: </strong>
-                          {project.original_owner}
-                        </p>
-                        <p className="info">
-                          <strong>Desc: </strong>
-                          {project.external_data.description}
-                        </p>
-                      </div>
-                    </Grid>
-                  </Grid>
-                </Card>
-              ))
+            {nfts && nfts?.data ? (
+              <div>
+                <p className="info">
+                  <strong>Last update: </strong> {nfts.data.updated_at}
+                </p>
+                <p>
+                  <strong className="info">Total Count: </strong>
+                  6+
+                </p>
+              </div>
             ) : (
-              <h2>No NFTs Yet...</h2>
+              <h2>No data</h2>
             )}
+            <TableContainer component={Paper}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Logo</TableCell>
+                    <TableCell>Id</TableCell>
+                    <TableCell>Contract name</TableCell>
+                    <TableCell>Contract address</TableCell>
+                    <TableCell>Contract symbol</TableCell>
+                    <TableCell>Contract decimals</TableCell>
+                    <TableCell>Logo url</TableCell>
+                    <TableCell>View Details</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {items &&
+                    items.map((legislator, key) => {
+                      let overallRating, overallBlkRating
+                      if (legislator.AverageRating) {
+                        overallRating = legislator.overallRating
+                      }
+                      if (legislator.AverageBLKRating) {
+                        overallBlkRating = legislator.overallBlkRating
+                      }
+                      return (
+                        <TableRow key={key}>
+                          <TableCell>
+                            <Avatar alt="nft logo" src={legislator.photoUrl} />
+                          </TableCell>
+                          <TableCell>
+                            {legislator.token_id} {legislator.photoUrl}
+                          </TableCell>
+                          <TableCell>{legislator.contract_name}</TableCell>
+                          <TableCell className="line-break">
+                            {legislator.contract_address}
+                          </TableCell>
+                          <TableCell>
+                            {legislator.contract_ticker_symbol}
+                          </TableCell>
+                          <TableCell>{legislator.contract_decimals}</TableCell>
+                          <TableCell className="line-break">
+                            {legislator.logo_url}
+                          </TableCell>
+                          <TableCell align="center">
+                            <a
+                              href={`https://mumbai.polygonscan.com/address/${legislator.contract_address}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <ChevronRightIcon
+                                fontSize="large"
+                                style={{ color: 'blue' }}
+                              />
+                            </a>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </div>
         )}
       </Container>

@@ -164,15 +164,6 @@ function App() {
             <SendTip sendTip={sendTip} />
           </Route>
 
-          <Route exact path="/create-pet" component={CreatePet} />
-
-          <Route path="/plant-swap">
-            <PlantswapContainer account={account} contractData={contractData} />
-          </Route>
-          <Route path="/community">
-            <CommunityContainer account={account} contractData={contractData} />
-          </Route>
-
           <Route
             exact
             path="/page-community/:fundId"

@@ -10,12 +10,12 @@ import {
   IconButton,
   Card,
 } from '@material-ui/core'
-import { apiKeyport } from '../../components/APIKEYPORT'
+// import { apiKeyport } from '../../components/APIKEYPORT'
 import { toast } from 'react-toast'
 import { ToastContainer } from 'react-toast'
 
 function DonateNFT() {
-
+  const apiKeyport = '5aca4bfa-4460-4000-ada2-dfe2b88831e8'
   const [image, setImage] = useState('')
   const [imageName, setImageName] = useState('')
   const [description, setDescription] = useState('')
@@ -29,7 +29,8 @@ function DonateNFT() {
     event.preventDefault()
     setImage(event.target.files[0])
     if (mintAddress === '') {
-      mintAddress = '0x5Df598c222C4A7e8e4AB9f347dcBd924B6458382'
+      mintAddress = '0xAF67cbD8fb00759C3b4667beAcfBB3600e25476A'
+      // mintAddress = '0x5Df598c222C4A7e8e4AB9f347dcBd924B6458382'
     }
     console.log(' image', event.target.files[0])
     const form = new FormData()
@@ -44,14 +45,13 @@ function DonateNFT() {
     }
 
     fetch(
-      'https://api.nftport.xyz/easy_mint?' +
+      'https://api.nftport.xyz/v0/mints/easy/files?' +
         new URLSearchParams({
           chain: 'polygon',
           name: imageName,
           description: description,
           mint_to_address: mintAddress,
-          msg:
-            'This is a gift for being a great Garden Community, thank you for all your hard work!',
+          msg: 'This is a gift for being a great  creator!',
         }),
       options,
     )
