@@ -26,9 +26,9 @@ export const Navbar = withRouter(
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
     const [udUser, setudUser] = useState('')
 
-    
+
     const uauth = new UAuth({
-      clientID: '69c407cc-4663-48af-af8a-4f90592ba307',
+      clientID: 'febba860-f127-4466-89b8-b4c2734c840f',
       redirectUri: 'http://localhost:3000',
     })
     const unstoppableDomainsLogin = async () => {
